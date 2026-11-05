@@ -96,16 +96,28 @@ require __DIR__ . '/../templates/header.php';
     >
 
     <label for="password">Password</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      autocomplete="current-password"
-      required
-    >
+    <div class="password-field">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      >
+      <button
+        type="button"
+        class="password-toggle"
+        data-toggle-password="password"
+        aria-controls="password"
+        aria-pressed="false"
+        hidden
+      >Show</button>
+    </div>
 
     <input type="submit" value="Log in">
 
   </form>
+
+  <script src="password-toggle.js"></script>
 
 <?php require __DIR__ . '/../templates/footer.php'; ?>

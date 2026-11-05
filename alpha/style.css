@@ -490,3 +490,34 @@ body.theme-light .success {
   margin: -0.5rem 0 0.75rem;
   color: var(--muted);
 }
+
+/* Show / hide password (login.php) */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 4.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.password-toggle:hover,
+.password-toggle[aria-pressed="true"] {
+  border-color: var(--text);
+  color: var(--text);
+}
