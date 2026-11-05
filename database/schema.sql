@@ -1,8 +1,14 @@
 -- Cookbook: database schema and seed data
--- Import into an empty database in phpMyAdmin (Import tab).
+-- Creates the idm232_cookbook database and everything in it, so it runs on
+-- an empty server: import it in phpMyAdmin (Import tab) or the mysql client.
+-- Re-importing rebuilds every table from scratch.
 -- categories -> recipes is one-to-many; every other table hangs off recipes
 -- by recipe_id. users holds admin logins (separate from the recipe data).
 -- Seed data: 6 categories, 40 recipes and one demo admin account.
+
+CREATE DATABASE IF NOT EXISTS idm232_cookbook
+  DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE idm232_cookbook;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

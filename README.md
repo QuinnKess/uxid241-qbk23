@@ -10,7 +10,7 @@ A cookbook web app built with PHP and MySQL, for home cooks looking for a recipe
 
 1. Install **XAMPP** or **MAMP** and start Apache and MySQL.
 2. Put this project folder inside your `htdocs` folder (XAMPP: `xampp/htdocs`, MAMP: `MAMP/htdocs`).
-3. Open phpMyAdmin, create a database named `idm232_cookbook` with collation `utf8mb4_unicode_ci`, then use the **Import** tab to load `database/schema.sql`.
+3. Open phpMyAdmin, go to the **Import** tab and load `database/schema.sql`. It creates the `idm232_cookbook` database and all its tables and data by itself, so no database needs to exist first. Importing it again rebuilds everything from scratch.
 4. Make a copy of `config.example.php` in the same folder, name it `config.php`, and fill in your database login. Usual defaults: XAMPP is port `3306`, user `root`, empty password; MAMP is port `8889`, user `root`, password `root`.
 5. Open the recipe list in your browser, using your project folder's name:
    - XAMPP: `http://localhost/<project-folder>/alpha/recipes.php`
