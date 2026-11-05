@@ -1,11 +1,13 @@
 -- Cookbook: database schema and seed data
 -- Import into an empty database in phpMyAdmin (Import tab).
 -- categories -> recipes is one-to-many; every other table hangs off recipes
--- by recipe_id. Seed data: 6 categories and 40 recipes.
+-- by recipe_id. users holds admin logins (separate from the recipe data).
+-- Seed data: 6 categories, 40 recipes and one demo admin account.
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS tips;
 DROP TABLE IF EXISTS recipe_tools;
@@ -136,6 +138,19 @@ CREATE TABLE images (
     REFERENCES recipes (recipe_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+-- Admin accounts. Passwords are never stored: password_hash holds the
+-- result of PHP's password_hash() (salted, slow, one-way). VARCHAR(255)
+-- leaves room for stronger algorithms later. email is UNIQUE so two
+-- accounts can't share one.
+CREATE TABLE users (
+  user_id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  email         VARCHAR(255) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id),
+  UNIQUE KEY uq_users_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- categories: 6 rows
 INSERT INTO categories (category_id, name) VALUES
@@ -1640,3 +1655,8 @@ INSERT INTO images (image_id, recipe_id, type, step_number, label, size, file_na
   (671, NULL, 'tool', NULL, 'Slotted Spatula', 'original', 'slotted-spatula-1.jpg', 'images/tools/slotted-spatula-1.jpg', 'slotted_spatula_10073.jpg'),
   (672, NULL, 'tool', NULL, 'Stainless Steel Strainer', 'original', 'stainless-steel-strainer-1.jpg', 'images/tools/stainless-steel-strainer-1.jpg', 'Strainer_10220.jpg'),
   (673, NULL, 'tool', NULL, 'Stainless Steel Strainer', 'original', 'stainless-steel-strainer-2.jpg', 'images/tools/stainless-steel-strainer-2.jpg', 'Stainless_Steel_Strainer_1829.jpg');
+
+-- users: 1 demo admin for local testing (see README for the login).
+-- The hash below was made with password_hash(); the password itself is not stored.
+INSERT INTO users (email, password_hash) VALUES
+  ('admin@cookbook.test', '$2y$10$vTIlZe1dN5uTZHUKc8h0DecbRCc7n/RhYbZbPfBswL4OMyX1S/XJ6');
