@@ -6,13 +6,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../includes/helpers.php';
 require __DIR__ . '/../includes/theme.php';
-
-// Read a POST field as trimmed text. Anything that is not a string
-// (for example name[]=x, which sends an array) counts as empty.
-function post_value(string $key): string {
-  $value = $_POST[$key] ?? '';
-  return is_string($value) ? trim($value) : '';
-}
+require __DIR__ . '/../includes/auth.php';
 
 $name = '';
 $email = '';

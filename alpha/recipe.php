@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../includes/helpers.php';
 require __DIR__ . '/../includes/theme.php';
+require __DIR__ . '/../includes/auth.php';
 require __DIR__ . '/../includes/recipe_queries.php';
 
 // Which recipe to show, from the link. User input: must be a whole number

@@ -18,3 +18,10 @@ function page_link(string $page, array $params = []): string {
 
   return $query === '' ? ($page === '' ? '?' : $page) : $page . '?' . $query;
 }
+
+// Read a POST field as trimmed text. Anything that is not a string
+// (for example name[]=x, which sends an array) counts as empty.
+function post_value(string $key): string {
+  $value = $_POST[$key] ?? '';
+  return is_string($value) ? trim($value) : '';
+}

@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../includes/helpers.php';
 require __DIR__ . '/../includes/theme.php';
+require __DIR__ . '/../includes/auth.php';
 require __DIR__ . '/../includes/recipe_queries.php';
 
 // Search words from the search box (?q=garlic). User input: must be text,
