@@ -72,7 +72,7 @@ require __DIR__ . '/../templates/header.php';
 ?>
 
   <p class="eyebrow">[ Recipe library ]</p>
-  <h1>Recipes from the <em>Database</em></h1>
+  <h1>Recipes from the Database</h1>
 
   <form class="search-form" action="recipes.php" method="get" role="search">
     <label for="q" class="visually-hidden">Search recipes</label>

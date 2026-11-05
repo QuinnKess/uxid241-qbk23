@@ -41,7 +41,7 @@ require __DIR__ . '/../templates/header.php';
 ?>
 
   <p class="eyebrow">[ Assignment 2 ]</p>
-  <h1>Forms and <em>User Input</em></h1>
+  <h1>Forms and User Input</h1>
 
   <?php if (!empty($errors)): ?>
     <ul class="errors">

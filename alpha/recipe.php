@@ -66,7 +66,7 @@ require __DIR__ . '/../templates/header.php';
 
   <?php elseif ($recipe === null): ?>
 
-    <h1>Recipe <em>not found</em></h1>
+    <h1>Recipe not found</h1>
     <p class="empty-state">
       That recipe doesn't exist. <a href="recipes.php">Browse all recipes</a>.
     </p>

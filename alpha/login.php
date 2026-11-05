@@ -73,7 +73,7 @@ require __DIR__ . '/../templates/header.php';
 ?>
 
   <p class="eyebrow">[ Admin ]</p>
-  <h1>Log <em>in</em></h1>
+  <h1>Log in</h1>
 
   <?php if ($error !== ''): ?>
     <p class="errors"><?= e($error) ?></p>

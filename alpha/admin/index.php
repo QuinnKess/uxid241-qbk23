@@ -40,7 +40,7 @@ require __DIR__ . '/../../templates/header.php';
 ?>
 
   <p class="eyebrow">[ Admin ]</p>
-  <h1>Recipe <em>admin</em></h1>
+  <h1>Recipe admin</h1>
 
   <?php if ($load_failed): ?>
     <p class="errors">The admin area couldn't be loaded. Please try again later.</p>

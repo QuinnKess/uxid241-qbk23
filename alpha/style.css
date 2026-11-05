@@ -71,14 +71,6 @@ h1 {
   text-transform: uppercase;
 }
 
-/* Italic serif accent word */
-h1 em {
-  font-family: var(--serif);
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
 /* Form */
 label {
   display: block;
