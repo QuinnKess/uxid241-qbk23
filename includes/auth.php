@@ -82,3 +82,17 @@ function csrf_is_valid(string $sent_token): bool {
   $known_token = $_SESSION['csrf_token'] ?? '';
   return $known_token !== '' && hash_equals($known_token, $sent_token);
 }
+
+// One-time message shown on the next page, for example after saving a recipe.
+// The page redirects after a successful save, so the message rides in the session.
+function set_flash(string $message): void {
+  $_SESSION['flash'] = $message;
+}
+
+// The waiting message, if any, removed so it only shows once.
+function take_flash(): ?string {
+  $message = $_SESSION['flash'] ?? null;
+  unset($_SESSION['flash']);
+
+  return is_string($message) ? $message : null;
+}
