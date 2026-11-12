@@ -82,28 +82,39 @@ require __DIR__ . '/../templates/header.php';
       <h1 class="recipe-title"><?= e($recipe['title']) ?></h1>
       <p class="recipe-subtitle recipe-subtitle-large"><?= e($recipe['subtitle']) ?></p>
 
-      <img class="recipe-hero" src="<?= e($recipe['main_image']) ?>" alt="<?= e($recipe['title']) ?>">
+      <?php if ($recipe['main_image'] !== ''): ?>
+        <img class="recipe-hero" src="<?= e($recipe['main_image']) ?>" alt="<?= e($recipe['title']) ?>">
+      <?php endif; ?>
 
-      <p class="recipe-description"><?= e($recipe['description']) ?></p>
+      <p class="recipe-description"><?= nl2br(e($recipe['description'])) ?></p>
 
       <div class="recipe-columns">
 
         <section class="recipe-ingredients" aria-labelledby="ingredients-heading">
           <h2 id="ingredients-heading">Ingredients</h2>
-          <ul>
-            <?php foreach ($ingredients as $ingredient): ?>
-              <li><?= e($ingredient['full_text']) ?></li>
-            <?php endforeach; ?>
-          </ul>
-          <img
-            src="<?= e($recipe['ingredients_image']) ?>"
-            alt="All the ingredients for <?= e($recipe['title']) ?>"
-            loading="lazy"
-          >
+          <?php if ($ingredients === []): ?>
+            <p class="empty-state">No ingredients added yet.</p>
+          <?php else: ?>
+            <ul>
+              <?php foreach ($ingredients as $ingredient): ?>
+                <li><?= e($ingredient['full_text']) ?></li>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
+          <?php if ($recipe['ingredients_image'] !== ''): ?>
+            <img
+              src="<?= e($recipe['ingredients_image']) ?>"
+              alt="All the ingredients for <?= e($recipe['title']) ?>"
+              loading="lazy"
+            >
+          <?php endif; ?>
         </section>
 
         <section class="recipe-steps" aria-labelledby="steps-heading">
           <h2 id="steps-heading">Steps</h2>
+          <?php if ($steps === []): ?>
+            <p class="empty-state">No steps added yet.</p>
+          <?php endif; ?>
           <ol>
             <?php foreach ($steps as $step): ?>
               <li>

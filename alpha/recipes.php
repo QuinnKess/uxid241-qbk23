@@ -124,11 +124,15 @@ require __DIR__ . '/../templates/header.php';
     <?php foreach ($recipes as $recipe): ?>
       <li class="recipe-card">
         <a class="recipe-link" href="<?= e(page_link('recipe.php', ['id' => (int) $recipe['recipe_id']])) ?>">
-          <img
-            src="<?= e($recipe['main_image']) ?>"
-            alt="<?= e($recipe['title']) ?>"
-            loading="lazy"
-          >
+          <?php if ($recipe['main_image'] !== ''): ?>
+            <img
+              src="<?= e($recipe['main_image']) ?>"
+              alt="<?= e($recipe['title']) ?>"
+              loading="lazy"
+            >
+          <?php else: ?>
+            <div class="photo-placeholder" aria-hidden="true">No photo yet</div>
+          <?php endif; ?>
           <p class="recipe-meta">
             <?= e($recipe['category']) ?> &middot; Serves <?= e((string) $recipe['servings']) ?>
           </p>

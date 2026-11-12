@@ -83,7 +83,10 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"],
+select,
+textarea {
   width: 100%;
   padding: 0.6rem 0;
   border: none;
@@ -96,7 +99,10 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-bottom-color: var(--text);
 }
@@ -512,4 +518,159 @@ body.theme-light .success {
 .password-toggle[aria-pressed="true"] {
   border-color: var(--text);
   color: var(--text);
+}
+
+/* Admin recipe form (admin/create.php, admin/edit.php) */
+select {
+  cursor: pointer;
+}
+
+select option {
+  background: var(--bg);
+  color: var(--text);
+}
+
+textarea {
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.optional {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.field-error {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: #ff9a90;
+}
+
+body.theme-light .field-error {
+  color: #b3261e;
+}
+
+[aria-invalid="true"] {
+  border-bottom-color: #ff6b5e;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.form-actions input[type="submit"] {
+  margin-top: 2.5rem;
+}
+
+.recipe-form .form-actions .back-link {
+  margin-top: 2.5rem;
+}
+
+/* Admin buttons, toolbar and table (admin/index.php, admin/delete.php) */
+.button,
+.button-danger {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.button-danger {
+  border-color: #ff6b5e;
+  color: #ff6b5e;
+}
+
+.button-danger:hover {
+  background: #ff6b5e;
+  color: var(--bg);
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.admin-toolbar .count {
+  margin: 0;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  padding: 0.6rem 0.75rem 0.6rem 0;
+  border-bottom: 1px solid var(--text);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.admin-table td {
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.admin-table a {
+  color: var(--text);
+}
+
+.admin-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.admin-actions a {
+  margin-left: 1rem;
+  font-size: 0.85rem;
+}
+
+.admin-table .danger-link {
+  color: #ff6b5e;
+}
+
+.confirm-text {
+  max-width: 36rem;
+  font-size: 1.1rem;
+}
+
+/* Recipes added in the admin have no photo until uploads arrive */
+.photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
 }
