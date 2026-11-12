@@ -26,9 +26,22 @@ The admin account is **seeded** by `schema.sql` (there is no registration page):
 
 Click **Log in** in the navigation. After logging in, **Admin** opens the recipe admin, where you can add, edit and delete recipes. This account is for local testing only; the database stores only its `password_hash()` result, never the password.
 
+## Which feature did you build?
+
+**Search.** Visitors can find recipes by typing words into the search box on the recipe library page.
+
+How to use it:
+
+1. Open `alpha/recipes.php` (no login needed).
+2. Type a word into **Search by name or ingredient**, for example `garlic` or `pasta`, and click **Search**.
+3. The list shows only recipes whose title, subtitle, description or ingredient names contain that word, with a count such as "6 recipes matching "pasta"". Click **Clear** to see every recipe again.
+
+How it works: `find_recipes()` in `includes/recipe_queries.php` passes the search words to MySQL only through a prepared statement with `LIKE ?` parameters (never pasted into the SQL), and escapes `%` and `_` so they are searched as normal characters.
+
+A **category filter** is also included as an extra: the category links above the list (All, Beef, Chicken and so on) narrow the results, and work together with search.
+
 ## Features
 
-- **Chosen beta feature: search.** The search box on `alpha/recipes.php` finds recipes whose title, subtitle, description or ingredient names contain the words, using a prepared statement with `LIKE ?` parameters. A category filter is also included and works together with search.
 - **Browse:** `alpha/recipes.php` lists every recipe with its photo, category and servings.
 - **Full CRUD on recipes (admin only):**
   - **Create:** `alpha/admin/create.php` adds a recipe (title, subtitle, category, servings, description).
